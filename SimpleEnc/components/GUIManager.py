@@ -15,10 +15,8 @@ class GUIRoot:
         self.root.mainloop()
 
     def runHome(self):
-        if(self.home==None):
-            self.home = Home.run(self.root);
-
-
+        if self.home is None:
+            self.home = Home.run(self.root)
 
 
 def start():

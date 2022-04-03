@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import filedialog, Listbox, Scrollbar, Frame, Button, Label, Entry, StringVar
+from tkinter import Frame, Button, Label, Entry, StringVar
 from cryptography.fernet import Fernet
 from components import KeyGenerator
 import traceback

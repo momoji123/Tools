@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import Scrollbar, Listbox, Frame
 from datetime import datetime
 
+
 class Console:
     master = None
     mainContainer = None
@@ -28,10 +29,10 @@ class Console:
 
     def consoleInsert(self, event, color=""):
         self.console.insert(tk.END, event)
-        if (color != ""):
+        if color != "":
             self.console.itemconfig(self.console.size() - 1, {"fg": color})
         self.console.yview(tk.END)
-        if (self.console.size() > 200):
+        if self.console.size() > 200:
             self.console.delete(0, 100)
 
     def clear(self):

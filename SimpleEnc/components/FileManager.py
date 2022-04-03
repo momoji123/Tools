@@ -1,6 +1,6 @@
 import sys
 import tkinter as tk
-from tkinter import filedialog, Listbox, Scrollbar, Frame, Button, Label
+from tkinter import filedialog, Frame, Button, Label
 
 
 class FileManager:
@@ -18,7 +18,7 @@ class FileManager:
         self.autoOpenFileIfExist()
 
     def show(self, mode=True):
-        if(mode):
+        if mode:
             self.mainContainer.pack(side=tk.TOP, fill=tk.BOTH)
         else:
             self.mainContainer.pack_forget()
@@ -34,9 +34,13 @@ class FileManager:
 
     def selectFile(self):
         self.filePath = filedialog.askopenfilename(initialdir="./", title="Select File",
-                                                    filetypes=[("Text File", "*.txt"), ("CSV Files", "*.csv"), ("Encrypted file", "*.enc"), ("All files", "*.*")])
+           filetypes=[
+               ("Text File", "*.txt"),
+               ("CSV Files", "*.csv"),
+               ("Encrypted file", "*.enc"),
+               ("All files", "*.*")
+           ])
         self.refreshFilenameInfo()
-        #self.updateStartBtn()
 
     def refreshFilenameInfo(self):
         self.labelFilenameInfo.config(text=self.filePath)

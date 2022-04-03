@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import filedialog, Listbox, Scrollbar, Frame, Button, Label
+from tkinter import Frame, Button
 from components import FileManager, Console
 from components.Mode import Mode
 from components.Encryptor import Encryptor
@@ -9,7 +9,7 @@ from components.Decryptor import Decryptor
 class HomeWindow:
     master = None
     mainContainer = None
-    fileManager=None
+    fileManager = None
     mode = None
     activeComponent = None
     console = None
@@ -26,7 +26,7 @@ class HomeWindow:
         self.autoModeSelection()
 
     def show(self, mode=True):
-        if (mode):
+        if mode:
             self.mainContainer.place(relwidth=0.9, relheight=0.9, relx=0.05, rely=0.05)
         else:
             self.mainContainer.place_forget()
@@ -53,13 +53,13 @@ class HomeWindow:
         Frame(self.mainContainer, height=50).pack(side=tk.TOP, fill=tk.X)
 
     def renderComponentByMode(self):
-        if(self.activeComponent!=None):
+        if self.activeComponent is not None:
             self.activeComponent.show(False)
             self.activeComponent = None
 
-        if(self.mode==Mode.ENCRYPT):
+        if self.mode == Mode.ENCRYPT:
             self.activeComponent = Encryptor(self.mainContainer, self.fileManager, self.console)
-        if(self.mode==Mode.DECRYPT):
+        if self.mode == Mode.DECRYPT:
             self.activeComponent = Decryptor(self.master, self.mainContainer, self.fileManager, self.console)
 
     def showConsole(self):
@@ -73,7 +73,6 @@ class HomeWindow:
             self.setMode(Mode.DECRYPT)
         else:
             self.setMode(Mode.ENCRYPT)
-
 
 
 def run(master):

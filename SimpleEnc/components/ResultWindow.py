@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import Toplevel, Label, Frame, Scrollbar, Text, Button
+from tkinter import Toplevel, Frame, Scrollbar, Text, Button
 from components import Console, KeyGenerator
 from cryptography.fernet import Fernet
 
@@ -62,12 +62,13 @@ class Window:
         self.console = Console.Console(self.mainContainer)
 
     def saveChangedPlain(self):
-        self.result = self.text.get("1.0",tk.END)
+        self.result = self.text.get("1.0", tk.END)
         self.savePlain()
 
     def savePlain(self):
         targetFilePath = self.fileDir + self.filename
         self.console.insertProcess("saving file to: " + targetFilePath)
+        writer = None
         try:
             writer = open(targetFilePath, "w")
             writer.write(self.result)
@@ -86,6 +87,7 @@ class Window:
     def saveEnc(self):
         targetFilePath = self.fileDir + self.filename + ".enc"
         self.console.insertProcess("saving file to: " + targetFilePath)
+        writer = None
         try:
             key = KeyGenerator.generateKey(self.password)
             textBin = self.result.encode()

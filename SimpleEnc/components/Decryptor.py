@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import filedialog, Listbox, Scrollbar, Frame, Button, Label, Entry, StringVar
+from tkinter import Frame, Button, Label, Entry, StringVar
 from cryptography.fernet import Fernet
 from components import KeyGenerator, ResultWindow
 import traceback
@@ -27,7 +27,7 @@ class Decryptor:
         self.showStartBtn()
 
     def show(self, mode=True):
-        if(mode):
+        if mode:
             self.mainContainer.pack(side=tk.TOP, fill=tk.BOTH)
         else:
             self.mainContainer.pack_forget()
@@ -47,8 +47,8 @@ class Decryptor:
         self.passInput = Entry(subContPass, show="*", width=50, textvariable=svPass)
         self.passInput.pack(side=tk.LEFT)
 
-    def setPassword(self, input):
-        self.password = input
+    def setPassword(self, password):
+        self.password = password
 
     def showStartBtn(self):
         button = Button(self.mainContainer, text="Start Decrpyt", command=self.startDecrypt, height=5, font="Verdana 18 bold")
@@ -60,7 +60,7 @@ class Decryptor:
             reader = self.fileManager.getFileReader(mode="rb")
             textBin = b""
             for line in reader:
-                textBin+=line
+                textBin += line
             encodedText = textBin
             encryptor = Fernet(KeyGenerator.generateKey(self.password))
             encryptedText = encryptor.decrypt(encodedText)
@@ -69,7 +69,7 @@ class Decryptor:
             self.console.insertSuccess("File was successfully decrypted!")
         except Exception as e:
             traceback.print_exc()
-            if(str(e)==""):
+            if str(e) == "":
                 self.console.insertFailed("Failed to encrypt file! please make sure opened file is encrypted file and password is right")
             else:
                 self.console.insertFailed(str(e))
