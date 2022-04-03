@@ -19,7 +19,7 @@ class Window:
         self.root = root
         self.result = result.strip()
         self.fileDir = fileManager.extractDir()
-        self.filename = fileManager.extractFilename().replace("_enc", "")
+        self.filename = fileManager.extractFilename().replace(".enc", "")
         self.openNew()
         self.showTextResult()
         self.showBtnMenu()
@@ -84,7 +84,7 @@ class Window:
         self.saveEnc()
 
     def saveEnc(self):
-        targetFilePath = self.fileDir + self.filename + "_enc"
+        targetFilePath = self.fileDir + self.filename + ".enc"
         self.console.insertProcess("saving file to: " + targetFilePath)
         try:
             key = KeyGenerator.generateKey(self.password)

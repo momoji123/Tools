@@ -83,7 +83,7 @@ class Encryptor:
             encodedText = text.encode()
             encryptor = Fernet(KeyGenerator.generateKey(self.password))
             encryptedText = encryptor.encrypt(encodedText)
-            targetDir = self.fileManager.extractDir() + self.fileManager.extractFilename() + "_enc"
+            targetDir = self.fileManager.extractDir() + self.fileManager.extractFilename() + ".enc"
             writer = self.fileManager.getFileWriter(path=targetDir, mode="wb")
             writer.write(encryptedText)
             self.console.insertSuccess("File was successfully encrypted!")

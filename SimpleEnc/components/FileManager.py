@@ -1,3 +1,4 @@
+import sys
 import tkinter as tk
 from tkinter import filedialog, Listbox, Scrollbar, Frame, Button, Label
 
@@ -14,6 +15,7 @@ class FileManager:
         self.master = master
         self.mainContainer = Frame(self.master)
         self.initGui()
+        self.autoOpenFileIfExist()
 
     def show(self, mode=True):
         if(mode):
@@ -32,7 +34,7 @@ class FileManager:
 
     def selectFile(self):
         self.filePath = filedialog.askopenfilename(initialdir="./", title="Select File",
-                                                    filetypes=[("Text File", "*.txt"), ("CSV Files", "*.csv"), ("Encrypted file", "*_enc"), ("All files", "*.*")])
+                                                    filetypes=[("Text File", "*.txt"), ("CSV Files", "*.csv"), ("Encrypted file", "*.enc"), ("All files", "*.*")])
         self.refreshFilenameInfo()
         #self.updateStartBtn()
 
@@ -64,21 +66,39 @@ class FileManager:
             self.reader.close()
 
     def extractFilename(self):
-        if self.filePath is None:
-            return ""
-        splitted = self.filePath.split("/")
-        if len(splitted)<2:
+        splitted = self.getSplittedPath()
+        if len(splitted) < 2:
             return ""
         return splitted[len(splitted)-1]
 
     def extractDir(self):
-        if self.filePath is None:
-            return ""
-        splitted = self.filePath.split("/")
-        if len(splitted)<2:
+        splitted = self.getSplittedPath()
+        if len(splitted) < 2:
             return ""
         dir = ""
         for dirPart in splitted[0:len(splitted)-1]:
             dir += dirPart
             dir += "/"
         return dir
+
+    def getSplittedPath(self):
+        if self.filePath is None:
+            return [""]
+        splitted = self.filePath.split("/")
+        if len(splitted) < 2:
+            splitted = self.filePath.split("\\")
+        if len(splitted) < 2:
+            return [""]
+        return splitted
+
+    def extractExtension(self):
+        filename = self.extractFilename()
+        if filename == "":
+            return ""
+        splitted = filename.split(".")
+        return splitted[len(splitted)-1]
+
+    def autoOpenFileIfExist(self):
+        if len(sys.argv)>1:
+            self.filePath = sys.argv[1]
+        self.refreshFilenameInfo()

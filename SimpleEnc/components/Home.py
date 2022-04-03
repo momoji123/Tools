@@ -23,6 +23,7 @@ class HomeWindow:
         self.addEmptySpace()
         self.prepareModeButtons()
         self.showConsole()
+        self.autoModeSelection()
 
     def show(self, mode=True):
         if (mode):
@@ -63,6 +64,16 @@ class HomeWindow:
 
     def showConsole(self):
         self.console = Console.Console(self.mainContainer)
+
+    def autoModeSelection(self):
+        extension = self.fileManager.extractExtension()
+        if extension == "":
+            return
+        elif extension == "enc":
+            self.setMode(Mode.DECRYPT)
+        else:
+            self.setMode(Mode.ENCRYPT)
+
 
 
 def run(master):

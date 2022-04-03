@@ -35,4 +35,4 @@
 [0519/111249.679:WARNING:resource_bundle_qt.cpp(116)] locale_file_path.empty() for locale 
 [0519/111249.779:WARNING:resource_bundle_qt.cpp(116)] locale_file_path.empty() for locale 
 [0519/112013.831:WARNING:resource_bundle_qt.cpp(116)] locale_file_path.empty() for locale 
-[0519/112013.933:WARNING:resource_bundle_qt.cpp(116)] locale_file_path.empty() for locale 
+[0519/112013.933:WARNING:resource_bundle_qt.cpp(116)] locale_file_path.empty() for locale
