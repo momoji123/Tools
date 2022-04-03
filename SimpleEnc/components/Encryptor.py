@@ -21,6 +21,7 @@ class Encryptor:
         self.mainContainer = Frame(self.master)
         self.console = console
         self.show()
+        self.addEmptySpace()
         self.showPasswordInput()
         self.addEmptySpace()
         self.showStartBtn()

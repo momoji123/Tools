@@ -4,6 +4,7 @@ from components import FileManager, Console
 from components.Mode import Mode
 from components.Encryptor import Encryptor
 from components.Decryptor import Decryptor
+from components.PassChanger import PassChanger
 
 
 class HomeWindow:
@@ -43,7 +44,10 @@ class HomeWindow:
         encBtn.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
         decBtn = Button(container, text="Decrypt", command=lambda: self.setMode(Mode.DECRYPT), font="verdana 12", height=10)
-        decBtn.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
+        decBtn.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+        decBtn = Button(container, text="Change Password", command=lambda: self.setMode(Mode.CHANGE_PASSWORD), font="verdana 12", height=10)
+        decBtn.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
     def setMode(self, mode):
         self.mode = mode
@@ -59,8 +63,10 @@ class HomeWindow:
 
         if self.mode == Mode.ENCRYPT:
             self.activeComponent = Encryptor(self.mainContainer, self.fileManager, self.console)
-        if self.mode == Mode.DECRYPT:
+        elif self.mode == Mode.DECRYPT:
             self.activeComponent = Decryptor(self.master, self.mainContainer, self.fileManager, self.console)
+        elif self.mode == Mode.CHANGE_PASSWORD:
+            self.activeComponent = PassChanger(self.mainContainer, self.fileManager, self.console)
 
     def showConsole(self):
         self.console = Console.Console(self.mainContainer)
