@@ -1,4 +1,7 @@
-SimpleEnc/.idea/**
-SimpleEnc/build/**
-SimpleEnc/build/main/
-SimpleEnc/.idea/vcs.xml
+*/.idea/**
+*/build/**
+*/build/main/
+*/.idea/vcs.xml
+*/dist/**
+*/venv/**
+
