@@ -57,7 +57,7 @@ class MouseTask:
         pyautogui.doubleClick(pyautogui.position().x, pyautogui.position().y, button=self.mouseBtn)
 
     def drag(self):
-        pyautogui.dragTo(self.position[0], self.position[1], duration=0.2, button=self.mouseBtn)
+        pyautogui.dragTo(self.position[0], self.position[1], duration=0.5, button=self.mouseBtn)
 
     def move(self):
         pyautogui.moveTo(self.position[0], self.position[1]);

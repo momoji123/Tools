@@ -11,7 +11,8 @@ def main():
     tm = TaskManager()
     nameList = getNameList()
     classList = getClassList()
-
+    print(nameList)
+    print(classList)
 
     ### START JOB ###
 
@@ -52,17 +53,18 @@ def main():
         #click download btn
         tm.addTask(tf.doLeftSingleClick(1618, 785))
         # wait
-        tm.addTask(tf.doWait(2))
+        tm.addTask(tf.doWait(3))
         #download
         tm.addTask(tf.doLeftSingleClick(1679, 686))
         #wait
-        tm.addTask(tf.doWait(8))
+        tm.addTask(tf.doWait(9))
 
         #click option
-        tm.addTask(tf.doLeftSingleClick(775, 504))
+        tm.addTask(tf.doLeftSingleClick(790, 505))
+        tm.addTask(tf.doWait(0.5))
         #click delete
-        tm.addTask(tf.doLeftSingleClick(883, 802))
-        tm.addTask(tf.doWait(0.2))
+        tm.addTask(tf.doLeftSingleClick(941, 810))
+        tm.addTask(tf.doWait(0.4))
 
         #click frame
         tm.addTask(tf.doLeftSingleClick(1402, 560))
@@ -72,8 +74,10 @@ def main():
         # move mouse to first foto in explorer
         tm.addTask(tf.doLeftSingleClick(291, 387))
         #delete photo in explorer
-        tm.addTask(tf.doKeyboardPress(["delete", "enter"]))
-        tm.addTask(tf.doWait(0.2))
+        tm.addTask(tf.doKeyboardCombination(["shift", "delete"]))
+        tm.addTask(tf.doWait(0.3))
+        tm.addTask(tf.doKeyboardPress(["enter"]))
+        tm.addTask(tf.doWait(0.3))
 
     start(tm)
 
@@ -84,6 +88,7 @@ def main():
 
     #start(tm)
     ### END OF JOB ###
+
 
 
 def start(tm:TaskManager):
@@ -115,7 +120,7 @@ def getClassList():
 
 
 def openFile():
-    return open("XII MIPA 3 DATA NAMA.csv", "r")
+    return open("XII MIPA 5 DATA NAMA.csv", "r")
 
 
 if __name__=="__main__":
