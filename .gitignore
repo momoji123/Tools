@@ -4,4 +4,6 @@
 */.idea/vcs.xml
 */dist/**
 */venv/**
-
+*/PUT IMAGES HERE/**
+*/__pycache__/**
+*/RESULT/**
