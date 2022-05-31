@@ -1,4 +1,5 @@
 import pyautogui
+import keyboard
 
 
 class TaskType:
@@ -33,18 +34,20 @@ class KeyboardTask:
         return self
 
     def start(self):
-        if self.taskTyp is TaskType.TYPING:
-            pyautogui.write(self.text)
-        elif self.taskTyp is TaskType.PRESS:
-            for btn in self.pressBtn:
-                pyautogui.press(btn)
-        elif self.taskTyp is TaskType.COMBINATION:
-            for i in range(len(self.pressBtn)):
-                btn = self.pressBtn[i]
-                if i == len(self.pressBtn)-1:
+        try:
+            if self.taskTyp is TaskType.TYPING:
+                keyboard.write(self.text, 0)
+            elif self.taskTyp is TaskType.PRESS:
+                for btn in self.pressBtn:
                     pyautogui.press(btn)
-                else:
-                    pyautogui.keyDown(btn)
-            for i in range(len(self.pressBtn)-1):
-                btn = self.pressBtn[i]
+            elif self.taskTyp is TaskType.COMBINATION:
+                for i in range(len(self.pressBtn)):
+                    btn = self.pressBtn[i]
+                    if i == len(self.pressBtn)-1:
+                        pyautogui.press(btn)
+                    else:
+                        pyautogui.keyDown(btn)
+        finally:
+            for btn in self.pressBtn:
                 pyautogui.keyUp(btn)
+            self.pressBtn = []

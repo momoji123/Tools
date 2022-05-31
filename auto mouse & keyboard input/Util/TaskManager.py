@@ -3,7 +3,7 @@ from time import sleep
 class TaskManager:
 
     tasks=[]
-    delay=0.2
+    delay=0.1
 
     def __init__(self):
         pass
