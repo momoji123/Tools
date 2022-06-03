@@ -1,4 +1,5 @@
 from Util import DataManager, DOCBuilder
+from docx.enum.section import WD_ORIENTATION
 
 def main():
     image_paths = DataManager.getFileList(DataManager.SOURCE_FOLDER)
@@ -12,6 +13,7 @@ def main():
     for path in image_paths:
         builder.addImage(DataManager.SOURCE_FOLDER + "/" + path, float(width), float(height))
     builder.setLayout(int(columns), int(rows))
+    builder.setOrientation(WD_ORIENTATION.PORTRAIT)
     builder.doWrap()
 
 if __name__=="__main__":

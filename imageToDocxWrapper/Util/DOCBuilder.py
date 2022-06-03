@@ -48,13 +48,6 @@ class builder:
                 number_of_row += 1
 
             basic_cell_idx = i - ((number_of_tables-1)*maxImagePerPage)
-            """
-            print("i: " + str(i))
-            print("row number: " + str(number_of_row))
-            print("number of cels: " + str(len(row_cells)))
-            print("index: " + str(basic_cell_idx-((number_of_row-1)*(self.layout[0]))))
-            print("minus howmuch: " + str((number_of_row-1)*(self.layout[0])))
-            """
             if i%10 == 0:
                print("done: " + str(i) + " from: " + str(len(self.images_path)))
             p = row_cells[basic_cell_idx-((number_of_row-1)*(self.layout[0]))].paragraphs[0]
@@ -74,12 +67,18 @@ class builder:
         return doc.add_table(rows=0, cols=self.layout[0])
 
     def setPageSize(self, doc):
+        long = 297
+        short = 210
         section = doc.sections[0]
-        section.page_height = Mm(210)
-        section.page_width = Mm(297)
+        if self.orientation is orient.LANDSCAPE:
+            section.page_height = Mm(short)
+            section.page_width = Mm(long)
+        if self.orientation is orient.PORTRAIT:
+            section.page_height = Mm(long)
+            section.page_width = Mm(short)
         section.left_margin = Mm(10)
         section.right_margin = Mm(10)
-        section.top_margin = Mm(10)
-        section.bottom_margin = Mm(10)
+        section.top_margin = Mm(5)
+        section.bottom_margin = Mm(0)
         section.header_distance = Mm(0)
         section.footer_distance = Mm(0)
