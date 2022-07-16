@@ -20,18 +20,18 @@ def main():
     classList = getClassList()
 
     #openBrowser
-    tm.addTask(tf.doLeftSingleClick(769, 1055))
+    tm.addTask(tf.doLeftSingleClick(346,1061))
 
     #open explorer
-    tm.addTask(tf.doLeftSingleClick(650, 1054))
-    tm.addTask(tf.doLeftSingleClick(511, 940))
+    tm.addTask(tf.doLeftSingleClick(168,1061))
+    tm.addTask(tf.doLeftSingleClick(52,948))
 
     for i in range(len(nameList)):
         # reset point
         resetPoint(tm)
 
         #insert name
-        tm.addTask(tf.doLeftDoubleClick(1474, 669))
+        tm.addTask(tf.doLeftDoubleClick(2902,494))
         tm.addTask(tf.doKeyboardCombination(["ctrl", "a"]))
         tm.addTask(tf.doKeyboardTyping(nameList[i]))
 
@@ -39,7 +39,7 @@ def main():
         resetPoint(tm)
 
         #insert class
-        tm.addTask(tf.doLeftDoubleClick(1474, 723))
+        tm.addTask(tf.doLeftDoubleClick(2901,574))
         tm.addTask(tf.doKeyboardCombination(["ctrl", "a"]))
         tm.addTask(tf.doKeyboardTyping(classList[i]))
 
@@ -47,48 +47,48 @@ def main():
         resetPoint(tm)
 
         #move to photo
-        tm.addTask(tf.doMoveMouse(344, 382))
+        tm.addTask(tf.doMoveMouse(1751,279))
         #drag
-        tm.addTask(tf.doDragMouse(684, 521))
+        tm.addTask(tf.doDragMouse(2070,386))
         tm.addTask(tf.doWait(2))
         #click photo to insert
-        tm.addTask(tf.doLeftSingleClick(676, 568))
+        tm.addTask(tf.doLeftSingleClick(2058,411))
 
         # reset point
         resetPoint(tm)
 
         #move to photo
-        tm.addTask(tf.doMoveMouse(1467, 529))
+        tm.addTask(tf.doMoveMouse(2828,374))
         #drag to frame
-        tm.addTask(tf.doDragMouse(1547, 528))
+        tm.addTask(tf.doDragMouse(2802,382))
 
         # reset point
         resetPoint(tm)
 
         #share
-        tm.addTask(tf.doLeftSingleClick(1856, 166))
+        tm.addTask(tf.doLeftSingleClick(3406,94))
         #download btn
-        tm.addTask(tf.doLeftSingleClick(1628, 765))
+        tm.addTask(tf.doLeftSingleClick(3232,580))
         #click dropdown
-        tm.addTask(tf.doLeftSingleClick(1631, 347))
+        tm.addTask(tf.doLeftSingleClick(3245,234))
         #click type
-        tm.addTask(tf.doLeftSingleClick(1562, 632))
-        tm.addTask(tf.doWait(1.5))
+        tm.addTask(tf.doLeftSingleClick(3162,462))
+        tm.addTask(tf.doWait(1))
         #donwload
-        tm.addTask(tf.doLeftSingleClick(1652, 493))
+        tm.addTask(tf.doLeftSingleClick(3254,346))
         tm.addTask(tf.doWait(25))
 
         #click option
-        tm.addTask(tf.doLeftSingleClick(711, 508))
+        tm.addTask(tf.doLeftSingleClick(2078,365))
         tm.addTask(tf.doWait(0.5))
         #delete
-        tm.addTask(tf.doLeftSingleClick(871, 830))
+        tm.addTask(tf.doLeftSingleClick(2194,618))
         #click frame
-        tm.addTask(tf.doLeftSingleClick(1475, 516))
+        tm.addTask(tf.doLeftSingleClick(2901,386))
         #delete
         tm.addTask(tf.doKeyboardPress(["delete"]))
         #click photo
-        tm.addTask(tf.doLeftSingleClick(329, 368))
+        tm.addTask(tf.doLeftSingleClick(1744,263))
         tm.addTask(tf.doKeyboardCombination(["shift", "delete"]))
         tm.addTask(tf.doWait(0.5))
         tm.addTask(tf.doKeyboardPress(["enter"]))
@@ -103,7 +103,7 @@ def main():
             sys.exit(1)
 
 def resetPoint(tm):
-    tm.addTask(tf.doLeftSingleClick(1196, 303))
+    tm.addTask(tf.doLeftSingleClick(2480,221))
 
 def registerTask(tm, jm:JobManager):
     jm.registerTask(tm)
@@ -140,7 +140,7 @@ def getClassList():
 
 
 def openFile():
-    return open("list mipa 3.csv", "r")
+    return open("PRESTASI MAT SC.csv", "r")
 
 
 if __name__=="__main__":
